@@ -78,6 +78,7 @@ core.register_on_player_receive_fields(function(player, formname, fields)
 			number = key:gsub("item:","")
 		end
 		local inv = core.get_inventory({type="player", name=target[name]})
+		if not inv then return end
 		local lists = inv:get_lists()
 		local ilist = genlist(lists)
 		local stack = inv:get_list(ilist[(tab[name] or 1)])[tonumber(number)]
