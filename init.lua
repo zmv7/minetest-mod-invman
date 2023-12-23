@@ -20,6 +20,7 @@ local function genlist(lists)
 end
 
 local function im_fs(name)
+	if not target[name] then return end
 	local y = 0.7
 	local x = 0
 	local inv = core.get_inventory({type="player", name=target[name]})
@@ -33,7 +34,7 @@ local function im_fs(name)
 	end
 	local formspec = "size["..W..","..fsh..
 	"]tabheader[0,0;tabs;"..table.concat(ilist,",")..";"..(tab[name] or "1")..";false;false]" ..
-	"label[0,0;"..name.."]"..
+	"label[0,0;"..target[name].."]"..
 	"checkbox["..(W-2)..",-0.2;grab_mode;Grab item;"..(grab_mode[name] and grab_mode[name] or "false").."]"
 	for number,stack in pairs(inv:get_list(ilist[(tab[name] or 1)])) do
 		local name = stack:get_name()
