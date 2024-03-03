@@ -37,6 +37,9 @@ local function im_fs(name)
 	"label[0,0;"..target[name].."]"..
 	"checkbox["..(W-2)..",-0.2;grab_mode;Grab item;"..(grab_mode[name] and grab_mode[name] or "false").."]"
 	for number,stack in pairs(inv:get_list(ilist[(tab[name] or 1)])) do
+		if not stack then
+			stack = ItemStack("")
+		end
 		local name = stack:get_name()
 		local count = stack:get_count()
 		local descr = stack:get_short_description()
